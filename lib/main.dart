@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'form.dart';
+import 'page/form.dart';
+import 'page/to_do_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -56,31 +57,43 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       // Menambahkan drawer menu
-      drawer: Drawer(
-        child: Column(
-          children: [
-            // Menambahkan clickable menu
-            ListTile(
-              title: const Text('Counter'),
-              onTap: () {
-                // Route menu ke halaman utama
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Form'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyFormPage()),
-                );
-              },
-            ),
-          ],
+      drawer: SafeArea(
+        child: Drawer(
+          child: Column(
+            children: [
+              // Menambahkan clickable menu
+              ListTile(
+                title: const Text('Counter'),
+                onTap: () {
+                  // Route menu ke halaman utama
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyHomePage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Form'),
+                onTap: () {
+                  // Route menu ke halaman form
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyFormPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('To Do'),
+                onTap: () {
+                  // Route menu ke halaman to do
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TodoPage()),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: Center(
@@ -104,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have clicked the button this many times',
+              'You have clicked the button this many times:',
             ),
             Text(
               '$_counter',
